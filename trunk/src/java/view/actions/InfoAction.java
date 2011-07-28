@@ -6,9 +6,11 @@
 package view.actions;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.bean.Producto;
 
 import model.dao.LingoDao;
 import org.apache.struts.actions.DispatchAction;
@@ -33,8 +35,9 @@ public class InfoAction extends DispatchAction {
         Map map = new HashMap();
         map.put("productos", LingoDao.getInstance().getProductos());
         map.put("meses", LingoDao.getInstance().getMeses());
-        
+        List<Producto> productos = LingoDao.getInstance().getProductos();
         f.setMapList(map);
+        request.setAttribute("lista", productos);
         return mapping.findForward(INFO);
     }
     
