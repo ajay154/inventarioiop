@@ -1,0 +1,97 @@
+/* styles for display tag table */
+TABLE.displaytag {
+   border: 0px;
+   border-top-style:none;
+   font-family: Tahoma,Arial,Helvetica,sans-serif;
+   font-size: 11px;
+}
+
+/*** TR.even: Style for even rows ***/
+TABLE.displaytag TR.even,
+TABLE.displaytag TR.even a{
+    background-color : #ffffff;  
+    font-size : 11px;
+    font-family : Tahoma;
+    height:24px;
+    color: #333333;
+    text-align: left;
+    vertical-align: top;
+}
+  
+/*** TR.odd: Style for odd rows ***/
+TABLE.displaytag TR.odd,
+TABLE.displaytag TR.odd a{
+    background-color :#ffffff;
+    font-size : 11px;
+    font-family : Tahoma;
+    color: #333333;
+    height:24px;
+    text-align: left;
+    vertical-align: top;
+}
+
+TABLE.displaytag TD{
+    padding:3px;
+    vertical-align:top;    
+}
+
+TABLE.displaytag TH,
+TABLE.displaytag TH.sorted,
+TABLE.displaytag TH.sortable{
+    background-color: #e4f0f8;
+    font-size:11px;
+    font-family: Tahoma;
+    padding:0px;
+    height:24px;
+    color: #333333;
+    text-align: center;
+    vertical-align:top;
+    padding-left:5px;
+    padding-top:3px;
+}
+TABLE.displaytag TH a,
+TABLE.displaytag TH.sorted a,
+TABLE.displaytag TH.sorted a:hover,
+TABLE.displaytag TH.sortable a,
+TABLE.displaytag TH.sortable a:hover{
+    background-color: #e4f0f8;
+    font-size:11px;
+    font-family: Tahoma;
+    padding:0px;
+    height:24px;
+    color: #333333;
+    text-align: center;
+    vertical-align:top;
+    padding-left:3px;
+    padding-top:0px;
+}
+
+.pagebanner {
+    font-family: Tahoma;
+    font-size: 11px;
+    font-weight: normal;
+    color: #333333;
+    padding:0px;
+}
+.pagelinks {
+    font-family: Tahoma;
+    font-size: 11px;
+    font-weight: normal;
+    color: #6F6F6F;
+    padding:0px;
+}
+.pagelinks a{
+    color: #333333;
+    text-decoration :none ;  
+}
+.pagelinks a:hover{
+    color: #333333;
+    text-decoration :underline;  
+}
+.pagepipe {
+    font-family: Tahoma;
+    font-size: 11px;
+    font-weight: normal;
+    color: #333333;
+}
+/* end styles for display tag table */
