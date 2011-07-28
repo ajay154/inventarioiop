@@ -6,7 +6,7 @@
 package model.bean;
 
 import java.io.Serializable;
-
+//
 /**
  *
  * @author Carlos
