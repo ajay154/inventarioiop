@@ -1,5 +1,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-html"
     prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <HEAD>
     <title> 
         Information
@@ -259,113 +261,42 @@
                                                                 <table class="displaytag" style="width:535px" cellspacing="1" id="rpt">
                                                                     <thead>
                                                                         <tr>
-                                                                        <th>Sector industrial</th>
-                                                                        <th>Empresa</th>
-                                                                        <th>Cantidad mínima a invertir</th>
-                                                                        <th>Cantidad máxima a invertir</th>
+                                                                        <th>Nombre de Producto</th>
+                                                                        <th>Cubicaje</th>
+                                                                        <th>Stock Minimo</th>
+                                                                        <th>Costo</th>
+                                                                        <th>Costo Inventario</th>
+                                                                        <th>Saldo Anterior</th>
                                                                     </thead>
-                                                                    <tbody>
-                                                                    <tr class="odd">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
-                                                                            Mineria
-                                                                        </td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Yanacocha</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.mineria[0].cantMinima}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.mineria[0].cantMaxima}</td>
-                                                                    </tr>
-                                                                    <tr class="odd">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Barrick</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.mineria[1].cantMinima}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.mineria[1].cantMaxima}</td>
-                                                                    </tr>
-                                                                    <tr class="odd">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Comarsa</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.mineria[2].cantMinima}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.mineria[2].cantMaxima}</td>
-                                                                    </tr>
-                                                                    <tr class="odd">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Minsur</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.mineria[3].cantMinima}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.mineria[3].cantMaxima}</td>
-                                                                    </tr>
                                                                     
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
-                                                                            Energia
+                                                                        <logic:iterate id="producto" name="lista">
+                                                                            <tbody>
+                                                                        <tr class="odd">
+                                                                        <td style="width:200px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
+                                                                            <bean:write name="producto" property="descripcion"/>
                                                                         </td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Edegel</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.energia[0].cantMinima}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.energia[0].cantMaxima}</td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Tecsur</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.energia[1].cantMinima}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.energia[1].cantMaxima}</td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Edecanete</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.energia[2].cantMinima}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.energia[2].cantMaxima}</td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Edenor</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.energia[3].cantMinima}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.energia[3].cantMaxima}</td>
-                                                                    </tr>
-                                                                    
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
-                                                                            Alimentos
+                                                                        <td style="width:50px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
+                                                                            <bean:write name="producto" property="cubicaje"/>
                                                                         </td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Alicorp</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.alimentos[0].cantMinima}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.alimentos[0].cantMaxima}</td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Sayon</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.alimentos[1].cantMinima}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.alimentos[1].cantMaxima}</td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Molitalia</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.alimentos[2].cantMinima}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.alimentos[2].cantMaxima}</td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Donofrio</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.alimentos[3].cantMinima}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.alimentos[3].cantMaxima}</td>
-                                                                    </tr>
-                                                                    
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
-                                                                            Plasticos
+                                                                        <td style="width:50px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
+                                                                            <bean:write name="producto" property="stockMin"/>
+                                                                        </td>                                                                        
+                                                                        <td style="width:50px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
+                                                                            <bean:write name="producto" property="costo"/>
                                                                         </td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Amanco</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.plasticos[0].cantMinima}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.plasticos[0].cantMaxima}</td>
+                                                                        <td style="width:50px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
+                                                                            <bean:write name="producto" property="costoInv"/>
+                                                                        </td>                                                                        
+                                                                        <td style="width:50px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
+                                                                            <bean:write name="producto" property="saldoAnt"/>
+                                                                        </td>                                                                        
                                                                     </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Nicoll</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.plasticos[1].cantMinima}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.plasticos[1].cantMaxima}</td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Tuboplast</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.plasticos[2].cantMinima}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.plasticos[2].cantMaxima}</td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Marca</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.plasticos[3].cantMinima}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.plasticos[3].cantMaxima}</td>
-                                                                    </tr>
-                                                                    
+                                                                       </logic:iterate>
                                                                 </table>
-                                                                
                                                                 
                                                         </td></tr>
                                                     </table>
+                                                                    
                                                     
                                                     <!--<br><img src="images/v_darkgraytop537.gif"><br>
                                                     <table border=0 cellpadding=0 cellspacing=0 width=537 bgcolor=cccccc>
@@ -378,6 +309,7 @@
                                                     <td align="right">
                                                         &nbsp;
                                                 </td></tr>
+                                               
                                             </table>
                                         </html:form>
                                         
@@ -402,7 +334,7 @@
                             
                             <table border="0" cellspacing="0" cellpadding="0" width="944">
                                 <tr>
-                                    <td WIDTH="640" class="graytxt2">Copyright 2009 &copy; <B>LOC-AID.</B> All rights reserved<!--&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Privacy Policy</a>&nbsp;!--></td>    
+                                    <td WIDTH="640" class="graytxt2">Copyright 2011 &copy; <B>FACUSA.</B> All rights reserved<!--&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Privacy Policy</a>&nbsp;!--></td>    
                                     <td class="graytxt2" width=335 align=right>
                                         <!--&nbsp;<a href="#">FAQ</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Contact Us</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
             &nbsp;<a href="#">Site Map</a><br>!-->
