@@ -128,139 +128,6 @@
                                                                 <table class="displaytag" style="width:535px" cellspacing="1" id="rpt">
                                                                     <thead>
                                                                         <tr>
-                                                                        <th>Sector industrial</th>
-                                                                        <th>Empresa</th>
-                                                                        <th>Rendimiento de Inversión en acciones tipo Alto</th>
-                                                                        <th>Rendimiento de Inversión en acciones tipo Bajo</th>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    <tr class="odd">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
-                                                                            Mineria
-                                                                        </td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Yanacocha</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.mineria[0].rendimientoA}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.mineria[0].rendimientoB}</td>
-                                                                    </tr>
-                                                                    <tr class="odd">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Barrick</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.mineria[1].rendimientoA}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.mineria[1].rendimientoB}</td>
-                                                                    </tr>
-                                                                    <tr class="odd">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Comarsa</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.mineria[2].rendimientoA}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.mineria[2].rendimientoB}</td>
-                                                                    </tr>
-                                                                    <tr class="odd">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Minsur</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.mineria[3].rendimientoA}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.mineria[3].rendimientoB}</td>
-                                                                    </tr>
-                                                                    
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
-                                                                            Energia
-                                                                        </td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Edegel</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.energia[0].rendimientoA}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.energia[0].rendimientoB}</td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Tecsur</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.energia[1].rendimientoA}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.energia[1].rendimientoB}</td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Edecanete</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.energia[2].rendimientoA}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.energia[2].rendimientoB}</td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Edenor</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.energia[3].rendimientoA}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.energia[3].rendimientoB}</td>
-                                                                    </tr>
-                                                                    
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
-                                                                            Alimentos
-                                                                        </td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Alicorp</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.alimentos[0].rendimientoA}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.alimentos[0].rendimientoB}</td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Sayon</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.alimentos[1].rendimientoA}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.alimentos[1].rendimientoB}</td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Molitalia</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.alimentos[2].rendimientoA}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.alimentos[2].rendimientoB}</td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Donofrio</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.alimentos[3].rendimientoA}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.alimentos[3].rendimientoB}</td>
-                                                                    </tr>
-                                                                    
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
-                                                                            Plasticos
-                                                                        </td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Amanco</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.plasticos[0].rendimientoA}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.plasticos[0].rendimientoB}</td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Nicoll</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.plasticos[1].rendimientoA}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.plasticos[1].rendimientoB}</td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Tuboplast</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.plasticos[2].rendimientoA}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.plasticos[2].rendimientoB}</td>
-                                                                    </tr>
-                                                                    <tr class="even">
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">Marca</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.plasticos[3].rendimientoA}</td>
-                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${InfoForm.mapList.plasticos[3].rendimientoB}</td>
-                                                                    </tr>
-                                                                    
-                                                                </table>
-                                                                
-                                                                
-                                                        </td></tr>
-                                                    </table>
-                                                    
-                                                    <!--<br><img src="images/v_darkgraytop537.gif"><br>
-                                                    <table border=0 cellpadding=0 cellspacing=0 width=537 bgcolor=cccccc>
-                                                        <td width="470px">&nbsp;</td>
-                                                        <td width="101"  style=""align="left"></td>
-                                                        <td width="101"  style=""align="left"><input type="image" name="" src="images/bot_export.gif" onclick="document.getElementsByName('method')[0].value='save'"></td>
-                                                    </table>
-                                                    <img src="images/vdarkgray_bottom537.gif"><br>-->
-                                                    <td width="50">&nbsp;</td>
-                                                    <td align="right">
-                                                        &nbsp;
-                                                </td></tr>
-                                            </table>
-                                            
-                                            
-                                            <table border="0" cellspacing="0" cellpadding="0" width="908" >
-                                                <tr><td width=535 height=23></td></tr>
-                                                <tr><td width=535 height=23><img src='images/rtit_summary.gif'><br></td></tr>
-                                                <tr><td width=535 align="left">
-                                                    <table border=0 cellpadding=0 cellspacing=0 width=535>
-                                                        <tr><td width=535 bgcolor=a8cfe4>
-                                                                <!-- information table -->
-                                                                
-                                                                <table class="displaytag" style="width:535px" cellspacing="1" id="rpt">
-                                                                    <thead>
-                                                                        <tr>
                                                                         <th>Nombre de Producto</th>
                                                                         <th>Cubicaje</th>
                                                                         <th>Stock Minimo</th>
@@ -269,7 +136,7 @@
                                                                         <th>Saldo Anterior</th>
                                                                     </thead>
                                                                     
-                                                                        <logic:iterate id="producto" name="lista">
+                                                                        <logic:iterate id="producto" name="productos">
                                                                             <tbody>
                                                                         <tr class="odd">
                                                                         <td style="width:200px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
@@ -294,9 +161,9 @@
                                                                        </logic:iterate>
                                                                 </table>
                                                                 
+                                                                
                                                         </td></tr>
                                                     </table>
-                                                                    
                                                     
                                                     <!--<br><img src="images/v_darkgraytop537.gif"><br>
                                                     <table border=0 cellpadding=0 cellspacing=0 width=537 bgcolor=cccccc>
@@ -305,6 +172,90 @@
                                                         <td width="101"  style=""align="left"><input type="image" name="" src="images/bot_export.gif" onclick="document.getElementsByName('method')[0].value='save'"></td>
                                                     </table>
                                                     <img src="images/vdarkgray_bottom537.gif"><br>-->
+                                                    <td width="50">&nbsp;</td>
+                                                    <td align="right">
+                                                        &nbsp;
+                                                </td></tr>
+                                            </table>
+                                            
+                                            
+                                            <table border="0" cellspacing="0" cellpadding="0" width="908" >
+                                                <tr><td width=535 height=23></td></tr>
+                                                <tr><td width=535 height=23><img src='images/rtit_summary.gif'><br></td></tr>
+                                                <tr><td width=535 align="left">
+                                                    <table border=0 cellpadding=0 cellspacing=0 width=200>
+                                                        <tr><td width=535 bgcolor=a8cfe4>
+                                                                <!-- information table -->
+                                                                
+                                                                <table class="displaytag" style="width:200px" cellspacing="1" id="rpt">
+                                                                    <thead>
+                                                                        <tr>
+                                                                        <th>Mes</th>
+                                                                        <th>Capacidad</th>
+                                                                        
+                                                                    </thead>
+                                                                    
+                                                                        <logic:iterate id="mes" name="meses">
+                                                                            <tbody>
+                                                                        <tr class="odd">
+                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
+                                                                            <bean:write name="mes" property="nombre"/>
+                                                                        </td>
+                                                                        <td style="width:50px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
+                                                                            <bean:write name="mes" property="capacidad"/>
+                                                                        </td>
+                                                                                                                                                
+                                                                    </tr>
+                                                                       </logic:iterate>
+                                                                </table>
+                                                                
+                                                        </td></tr>
+                                                    </table>
+                                                    
+                                                    <td width="50">&nbsp;</td>
+                                                    <td align="right">
+                                                        &nbsp;
+                                                </td></tr>
+                                               
+                                            </table>
+                                           
+                                           
+                                            <table border="0" cellspacing="0" cellpadding="0" width="908" >
+                                                <tr><td width=535 height=23></td></tr>
+                                                <tr><td width=535 height=23><img src='images/rtit_summary.gif'><br></td></tr>
+                                                <tr><td width=535 align="left">
+                                                    <table border=0 cellpadding=0 cellspacing=0 width=200>
+                                                        <tr><td width=535 bgcolor=a8cfe4>
+                                                                <!-- information table -->
+                                                                
+                                                                <table class="displaytag" style="width:535px" cellspacing="1" id="rpt">
+                                                                    <thead>
+                                                                        <tr>
+                                                                        <th>Producto</th>
+                                                                        <logic:iterate id="dem" name="vistaDemanda">
+                                                                        <th><bean:write name="dem" property="mes.nombre"/></th>    
+                                                                        </logic:iterate>
+                                                                        
+                                                                    </thead>
+                                                                    
+                                                                        <logic:iterate id="vi" name="vista">
+                                                                            <tbody>
+                                                                        <tr class="odd">
+                                                                        <td style="width:200px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
+                                                                            <bean:write name="vi" property="producto.descripcion"/>
+                                                                        </td>
+                                                                        <logic:iterate id="de" name="vi" property="demanda">
+                                                                        <td style="width:50px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;" rowspan=4>
+                                                                            <bean:write name="de" property="cantidad"/>
+                                                                        </td>    
+                                                                        </logic:iterate>
+                                                                        </tr>
+                                                                       </logic:iterate>
+                                                                </table>
+                                                                
+                                                        </td></tr>
+                                                    </table>
+                                                    
                                                     <td width="50">&nbsp;</td>
                                                     <td align="right">
                                                         &nbsp;
