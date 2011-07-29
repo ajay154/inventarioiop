@@ -14,9 +14,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import model.bean.Demanda;
 import model.bean.Mes;
 import model.bean.Producto;
 import model.bean.Usuario;
+import model.bean.VistaDemandaBean;
 
 /**
  *
@@ -478,6 +480,53 @@ public class LingoDao {
             }
 
             return list;
+        }
+    }
+
+    public ArrayList<Demanda> getDemanda(Integer productId) {
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        ArrayList<Demanda> demandaList = new ArrayList<Demanda>();
+        String sql = null;
+        try {
+            conn = getConnection();
+            
+            sql="SELECT  TB_PRODUCTO.DESCRIPCION, TB_MES.NOMBRE,TB_PRODUCTO_MES.DEMANDA FROM "
+                    + "(TB_PRODUCTO_MES INNER JOIN TB_PRODUCTO ON TB_PRODUCTO_MES.Id_PRODUCTO = TB_PRODUCTO.Id_PRODUCTO) "
+                    + "INNER JOIN TB_MES ON TB_PRODUCTO_MES.Id_MES = TB_MES.Id_MES WHERE TB_PRODUCTO.ID_PRODUCTO="+productId+";";
+            
+            pstm = conn.prepareStatement(sql);
+
+            rs = pstm.executeQuery();
+            while (rs.next()) {
+                Demanda demanda = new Demanda();
+                
+                Mes mes = new Mes();
+                mes.setNombre(rs.getString(2));
+                demanda.setCantidad(rs.getInt(3));
+                demanda.setMes(mes);
+                
+                demandaList.add(demanda);
+                
+            }
+            rs.close();
+        } catch (Exception e) {
+            System.out.println("Error de BD");
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (pstm != null) {
+                    pstm.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+
+            return demandaList;
         }
     }
 
