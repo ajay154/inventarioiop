@@ -4,33 +4,23 @@
  */
 package model.bean;
 
+import java.util.List;
+
 /**
  *
  * @author Laptop
  */
-public class Demanda extends Bean{
+public class VistaDemandaBean extends Bean{
     
     private Producto producto;
-    private Mes mes;
-    private int cantidad;
+    private List<Demanda> demanda;
 
-    public Demanda() {
+    public List<Demanda> getDemanda() {
+        return demanda;
     }
 
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public Mes getMes() {
-        return mes;
-    }
-
-    public void setMes(Mes mes) {
-        this.mes = mes;
+    public void setDemanda(List<Demanda> demanda) {
+        this.demanda = demanda;
     }
 
     public Producto getProducto() {
@@ -40,7 +30,6 @@ public class Demanda extends Bean{
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
-    
     
     
 }
