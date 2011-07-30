@@ -228,7 +228,7 @@
                                                         <tr><td width=535 bgcolor=a8cfe4>
                                                                 <!-- information table -->
                                                                 
-                                                                <table class="displaytag" style="width:535px" cellspacing="1" id="rpt">
+                                                                <table class="displaytag" style="width:900px" cellspacing="1" id="rpt">
                                                                     <thead>
                                                                         <tr>
                                                                         <th>Producto</th>
@@ -241,11 +241,11 @@
                                                                         <logic:iterate id="vi" name="vista">
                                                                             <tbody>
                                                                         <tr class="odd">
-                                                                        <td style="width:200px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
+                                                                        <td style="width:250px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
                                                                             <bean:write name="vi" property="producto.descripcion"/>
                                                                         </td>
                                                                         <logic:iterate id="de" name="vi" property="demanda">
-                                                                        <td style="width:50px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;" rowspan=4>
+                                                                        <td style="width:80px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;" rowspan=4>
                                                                             <bean:write name="de" property="cantidad"/>
                                                                         </td>    
                                                                         </logic:iterate>
