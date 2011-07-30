@@ -6,11 +6,15 @@ package view.actions;
 
 import com.lindo.Lingd10;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.bean.Pedido;
+import model.bean.Producto;
+import model.bean.VistaPedidoBean;
 
 import model.dao.LingoDao;
 import org.apache.struts.actions.DispatchAction;
@@ -49,13 +53,13 @@ public class SolverAction extends DispatchAction {
     
     public ActionForward chart(ActionMapping mapping, ActionForm form, HttpServletRequest req, HttpServletResponse resp) throws Exception {
         System.out.println("chart.inicio");
-        List list = LingoDao.getInstance().getCantidadXEmpresaXSector();
+        List list = LingoDao.getInstance().getCantidadXProductoXMes();
         resp.setContentType("image/jpeg");
         OutputStream salida = resp.getOutputStream();
-        JFreeChart grafica = ChartUtil.createBarChart(list, "Comparativo X Empresa X Sector","","");
+        JFreeChart grafica = ChartUtil.createBarChart(list, "Cantidad de productos a pedido X Mes","","");
         CustomActionForm f = (CustomActionForm)form;
         f.getMapList().put("chart", grafica);
-        ChartUtilities.writeChartAsJPEG(salida,grafica,370,250);
+        ChartUtilities.writeChartAsJPEG(salida,grafica,520,400);
         salida.close();
         System.out.println("chart.fin");
         return null;
@@ -80,12 +84,24 @@ public class SolverAction extends DispatchAction {
         CustomActionForm f = (CustomActionForm)form;
         Map map = new HashMap();
         solve();
-        map.put("xmineria", LingoDao.getInstance().getListXMineria());
-        map.put("xenergia", LingoDao.getInstance().getListXEnergia());
-        map.put("xalimentos", LingoDao.getInstance().getListXAlimento());
-        map.put("xplasticos", LingoDao.getInstance().getListXPlasticos());
         f.setMapList(map);
         f.setReadOnly("SOLVER");
+        
+        List<Producto> productos = LingoDao.getInstance().getProductos();
+        List<VistaPedidoBean> vistaPedidoList = new ArrayList<VistaPedidoBean>();
+        List<Pedido> pedidoList = new ArrayList<Pedido>();
+        for(Producto prod:productos){
+            pedidoList = LingoDao.getInstance().getPedido(prod.getId());
+            VistaPedidoBean vista = new VistaPedidoBean();
+            vista.setProducto(prod);
+            vista.setPedido(pedidoList);
+            vistaPedidoList.add(vista);
+        }
+        
+        
+        request.setAttribute("vista2", vistaPedidoList);
+        request.setAttribute("vistaPedido", pedidoList);
+        
         return mapping.findForward(SOLVER);
     }
 
@@ -106,7 +122,7 @@ public class SolverAction extends DispatchAction {
         }
 
         // open a log file
-        nErr = lng.LSopenLogFileLng(pnLngEnv, resourcesPath + "inversion.log");
+        nErr = lng.LSopenLogFileLng(pnLngEnv, resourcesPath + "inventario.log");
         if (nErr != lng.LSERR_NO_ERROR_LNG) {
             System.out.println("***LSopenLogFileLng() error***: " + nErr);
             return;
@@ -131,7 +147,7 @@ public class SolverAction extends DispatchAction {
         nErr = lng.LSsetCallbackErrorLng(pnLngEnv, "MyErrorCallback", this);
 
         // construct the script
-        String scriptPath = resourcesPath + "INVERSION.LNG";
+        String scriptPath = resourcesPath + "inventario.lng";
         String sScript = "SET ECHOIN 1" + "\n";
 
         // load the model from disk

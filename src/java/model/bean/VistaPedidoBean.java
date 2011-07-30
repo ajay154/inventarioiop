@@ -4,26 +4,16 @@
  */
 package model.bean;
 
+import java.util.List;
+
 /**
  *
  * @author Laptop
  */
-public class Pedido extends Bean{
+public class VistaPedidoBean extends Bean{
     
     private Producto producto;
-    private Mes mes;
-    private int cantidad;
-
-    public Pedido() {
-    }
-
-    public Mes getMes() {
-        return mes;
-    }
-
-    public void setMes(Mes mes) {
-        this.mes = mes;
-    }
+    private List<Pedido> pedido;
 
     public Producto getProducto() {
         return producto;
@@ -33,12 +23,12 @@ public class Pedido extends Bean{
         this.producto = producto;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public List<Pedido> getPedido() {
+        return pedido;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setPedido(List<Pedido> pedido) {
+        this.pedido = pedido;
     }
     
     
