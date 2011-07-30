@@ -2,6 +2,7 @@
            prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic"
            prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <HEAD>
     <title> 
         Solution
@@ -151,61 +152,27 @@
                                                                 <tr><td width=535 bgcolor=a8cfe4>
                                                                         <!-- information table -->
                                                     
-                                                                        <table class="displaytag" style="width:535px" cellspacing="1" id="rpt">
+                                                                        <table class="displaytag" style="width:900px" cellspacing="1" id="rpt">
                                                                             <thead>
                                                                                 <tr>
-                                                                                <th>Sector industrial</th>
-                                                                                <th>Empresa</th>
-                                                                                <th>Cant. Invertida en acciones tipo Alto</th>
-                                                                                <th>Cant. Invertida en acciones tipo Bajo</th>
+                                                                                <th>Producto</th>
+                                                                                <logic:iterate id="ped" name="vistaPedido">
+                                                                                <th><bean:write name="ped" property="mes.nombre"/></th>    
+                                                                                </logic:iterate>
                                                                             </thead>
-                                                                            <tbody>
-                                                                                <logic:iterate id="xinversion" name="SolverForm" property="mapList.xmineria" indexId="i" >
+                                                                            
+                                                                                <logic:iterate id="vi" name="vista2">
+                                                                                    <tbody>
                                                                                     <tr class="odd">
-                                                                                        <logic:equal name="i" value="0">
-                                                                                            <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
-                                                                                                Mineria
+                                                                                            <td style="width:250px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
+                                                                                                <bean:write name="vi" property="producto.descripcion"/>
                                                                                             </td>
-                                                                                        </logic:equal>
-                                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${xinversion.descripcion}</td>
-                                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${xinversion.cantidadA}</td>
-                                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${xinversion.cantidadB}</td>
-                                                                                    </tr>
-                                                                                </logic:iterate>
-                                                                                <logic:iterate id="xinversion" name="SolverForm" property="mapList.xenergia" indexId="i" >
-                                                                                    <tr class="even">
-                                                                                        <logic:equal name="i" value="0">
-                                                                                            <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
-                                                                                                Energia
+                                                                                            <logic:iterate id="pe" name="vi" property="pedido">
+                                                                                            <td style="width:80px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
+                                                                                                <bean:write name="pe" property="cantidad"/>
                                                                                             </td>
-                                                                                        </logic:equal>
-                                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${xinversion.descripcion}</td>
-                                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${xinversion.cantidadA}</td>
-                                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${xinversion.cantidadB}</td>
-                                                                                    </tr>
-                                                                                </logic:iterate>
-                                                                                <logic:iterate id="xinversion" name="SolverForm" property="mapList.xalimentos" indexId="i" >
-                                                                                    <tr class="odd">
-                                                                                        <logic:equal name="i" value="0">
-                                                                                            <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
-                                                                                                Alimentos
-                                                                                            </td>
-                                                                                        </logic:equal>
-                                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${xinversion.descripcion}</td>
-                                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${xinversion.cantidadA}</td>
-                                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${xinversion.cantidadB}</td>
-                                                                                    </tr>
-                                                                                </logic:iterate>
-                                                                                <logic:iterate id="xinversion" name="SolverForm" property="mapList.xplasticos" indexId="i" >
-                                                                                    <tr class="even">
-                                                                                        <logic:equal name="i" value="0">
-                                                                                            <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal;" rowspan=4>
-                                                                                                Plasticos
-                                                                                            </td>
-                                                                                        </logic:equal>
-                                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${xinversion.descripcion}</td>
-                                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${xinversion.cantidadA}</td>
-                                                                                        <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">${xinversion.cantidadB}</td>
+                                                                                            
+                                                                                            </logic:iterate>    
                                                                                     </tr>
                                                                                 </logic:iterate>
                                                                             </tbody>
@@ -215,12 +182,25 @@
                                                             </table>
                                                             <td width="50">&nbsp;</td>
                                                             <td align="right">
-                                                                <a href="javascript:displayMessage('<html:rewrite page="/solver_chart.jsp" />')"><html:img action="/Solver.do?method=chart" alt="No Data"/></a>
                                                                 
                                                             </td>
                                                     </td></tr>
+                                                    <tr>
+                                                        <td>
+                                                            <table border="0" cellspacing="5" cellpadding="0" width="908">
+                                                                <tr>
+                                                                    <td style="text-align: center;">
+                                                                    <a href="javascript:displayMessage('<html:rewrite page="/solver_chart.jsp" />')"><html:img action="/Solver.do?method=chart" alt="No Data"/></a>
+                                                                    </td>
+                                                                </tr>
+                                                            </table> 
+                                                        </td>
+                                                    </tr>
                                                 </logic:equal>
                                             </table>
+                                            </br>
+                                           
+                                                 
                                         </html:form>
                                         
                                    
