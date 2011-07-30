@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 import model.bean.Demanda;
 import model.bean.Mes;
+import model.bean.Pedido;
 import model.bean.Producto;
 import model.bean.Usuario;
 import model.bean.VistaDemandaBean;
@@ -248,7 +249,10 @@ public class LingoDao {
             String sql = " select * from vw_cantidadXEmpresaXSector ";
 
             pstm = conn.prepareStatement(sql);
-
+//serie mes
+//category producto
+//value pedido
+            
             rs = pstm.executeQuery();
             while (rs.next()) {
                 Map map = new HashMap();
@@ -451,7 +455,7 @@ public class LingoDao {
         try {
             conn = getConnection();
             
-            sql="select * from TB_MES";
+            sql="select * from TB_MES ORDER BY 1";
             
             pstm = conn.prepareStatement(sql);
 
@@ -529,7 +533,99 @@ public class LingoDao {
             return demandaList;
         }
     }
+    
+    public ArrayList<Pedido> getPedido(Integer productId) {
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        ArrayList<Pedido> pedidoList = new ArrayList<Pedido>();
+        String sql = null;
+        try {
+            conn = getConnection();
+            
+            sql="SELECT TB_PRODUCTO.DESCRIPCION, TB_MES.NOMBRE, TB_PEDIDO.X "
+                    + "FROM (TB_PEDIDO INNER JOIN TB_PRODUCTO ON TB_PEDIDO.Id_PRODUCTO=TB_PRODUCTO.Id_PRODUCTO) "
+                    + "INNER JOIN TB_MES ON TB_PEDIDO.Id_MES=TB_MES.Id_MES WHERE TB_PRODUCTO.ID_PRODUCTO="+productId+";";
+            
+            pstm = conn.prepareStatement(sql);
 
+            rs = pstm.executeQuery();
+            while (rs.next()) {
+                Pedido pedido = new Pedido();
+                
+                Mes mes = new Mes();
+                mes.setNombre(rs.getString(2));
+                pedido.setCantidad(rs.getInt(3));
+                pedido.setMes(mes);
+                
+                pedidoList.add(pedido);
+                
+            }
+            rs.close();
+        } catch (Exception e) {
+            System.out.println("Error de BD");
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (pstm != null) {
+                    pstm.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+
+            return pedidoList;
+        }
+    }
+
+     public ArrayList getCantidadXProductoXMes() {
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        ArrayList list = new ArrayList();
+        try {
+            conn = getConnection();
+            String sql = "SELECT TB_MES.Id_MES,TB_MES.NOMBRE,TB_PRODUCTO.DESCRIPCION, TB_PEDIDO.X "
+                    + "FROM (TB_PEDIDO INNER JOIN TB_PRODUCTO ON TB_PEDIDO.Id_PRODUCTO=TB_PRODUCTO.Id_PRODUCTO) "
+                    + "INNER JOIN TB_MES ON TB_PEDIDO.Id_MES=TB_MES.Id_MES ORDER BY 1,4;";
+            
+//            String sql = "SELECT TB_MES.Id_MES,TB_PRODUCTO.DESCRIPCION,TB_MES.NOMBRE, TB_PEDIDO.X "
+//                   + "FROM (TB_PEDIDO INNER JOIN TB_PRODUCTO ON TB_PEDIDO.Id_PRODUCTO=TB_PRODUCTO.Id_PRODUCTO) " 
+//                   + "INNER JOIN TB_MES ON TB_PEDIDO.Id_MES=TB_MES.Id_MES ORDER BY 1,4;";
+//            
+            
+            pstm = conn.prepareStatement(sql);
+            
+            rs = pstm.executeQuery();
+            while (rs.next()) {
+                Map map = new HashMap();
+                map.put("serie", rs.getString(2));
+                map.put("category", rs.getString(3));
+                map.put("value", rs.getString(4));
+                list.add(map);
+            }
+            rs.close();
+        } catch (Exception e) {
+            System.out.println("Error de BD");
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (pstm != null) {
+                    pstm.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+
+            return list;
+        }
+    }
 
     private Connection getConnection() throws SQLException {
         return Conexion.getInstance().getConnection();
