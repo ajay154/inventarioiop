@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.bean.Demanda;
+import model.bean.Producto;
+import model.bean.VistaDemandaBean;
 
 import model.dao.LingoDao;
 import org.apache.struts.actions.DispatchAction;
@@ -45,18 +48,28 @@ public class DataAction extends DispatchAction {
         String title = null;
         if (tipo == null) {
             return mapping.findForward(INICIO);
-        } else if (tipo.equals("mineria")) {
-            list = LingoDao.getInstance().getListMineria();
-            title = "Mineria";
-        } else if (tipo.equals("energia")) {
-            list = LingoDao.getInstance().getListPlastico();
-            title = "Energia";
-        } else if (tipo.equals("alimentos")) {
-            list = LingoDao.getInstance().getListAlimento();
-            title = "Alimentos";
-        } else if (tipo.equals("plasticos")) {
-            list = LingoDao.getInstance().getListPlastico();
-            title = "Plasticos";
+        } else if (tipo.equals("productos")) {
+            list = LingoDao.getInstance().getProductos();
+            title = "Productos";
+        } else if (tipo.equals("meses")) {
+            list = LingoDao.getInstance().getMeses();
+            title = "Meses";
+        } else if (tipo.equals("demanda")) {
+            
+            List<Producto> productos = LingoDao.getInstance().getProductos();
+            List<VistaDemandaBean> vistaDemandaList = new ArrayList<VistaDemandaBean>();
+            List<Demanda> demandaList = new ArrayList<Demanda>();
+            for (Producto prod : productos) {
+                demandaList = LingoDao.getInstance().getDemanda(prod.getId());
+                VistaDemandaBean vista = new VistaDemandaBean();
+                vista.setProducto(prod);
+                vista.setDemanda(demandaList);
+                vistaDemandaList.add(vista);
+            }
+            request.setAttribute("vistaDemanda", demandaList);
+            list = vistaDemandaList;
+            title = "Demanda";
+        
         } else {
             return mapping.findForward(INICIO);
         }
@@ -72,17 +85,14 @@ public class DataAction extends DispatchAction {
         CustomActionForm f = (CustomActionForm) form;
         String tipo = f.getReadOnly();
         ArrayList list = (ArrayList) f.getBeanList();
-        if (tipo.equals("mineria")) {
-            LingoDao.getInstance().updateMineria(list);
-        }
-        else if (tipo.equals("energia")) {
-            LingoDao.getInstance().updateEnergia(list);
-        }
-        else if (tipo.equals("alimentos")) {
-            LingoDao.getInstance().updateAlimento(list);
-        }
-        else {
-            LingoDao.getInstance().updatePlastico(list);
+        if (tipo.equals("productos")) {
+            LingoDao.getInstance().updateProducto(list);
+        } else if (tipo.equals("meses")) {
+            LingoDao.getInstance().updateMes(list);
+        } else {
+            
+            LingoDao.getInstance().updateDemanda(list);
+            
         }
         return mapping.findForward(INICIO);
     }
