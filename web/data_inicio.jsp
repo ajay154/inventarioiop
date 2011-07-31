@@ -118,28 +118,23 @@
                                                                     
                                                                     
                                                                     <tr height="32"><td align="center" >
-                                                                            <html:link action="/Data.do?method=configurar&tipo=mineria"><img src="images/rep_trx.gif" name="repOption1" height="100%" border="0" alt="" onmouseover="document.repOption1.src='images/rep_trx2.gif'" onmouseout="document.repOption1.src='images/rep_trx.gif'"></html:link>
+                                                                            <html:link action="/Data.do?method=configurar&tipo=productos"><img src="images/rep_trx.gif" name="repOption1" height="100%" border="0" alt="" onmouseover="document.repOption1.src='images/rep_trx2.gif'" onmouseout="document.repOption1.src='images/rep_trx.gif'"></html:link>
                                                                    </td></tr>
                                                                     
                                                                     <tr height="9"><td></td></tr>
                                                                     
                                                                      <tr height="32"><td align="center" >
-                                                                            <html:link action="/Data.do?method=configurar&tipo=energia"><img src="images/rep_end.gif" name="repOption3" height="100%" border="0" alt="" onmouseover="document.repOption3.src='images/rep_end2.gif'" onmouseout="document.repOption3.src='images/rep_end.gif'"></html:link>
+                                                                            <html:link action="/Data.do?method=configurar&tipo=meses"><img src="images/rep_end.gif" name="repOption3" height="100%" border="0" alt="" onmouseover="document.repOption3.src='images/rep_end2.gif'" onmouseout="document.repOption3.src='images/rep_end.gif'"></html:link>
                                                                     </td></tr>
                                                                     
                                                                     <tr height="9"><td></td></tr>
                                                                     
                                                                     
                                                                     <tr height="32"><td align="center" >
-                                                                            <html:link action="/Data.do?method=configurar&tipo=alimentos"><img src="images/rep_cus.gif" name="repOption4" height="100%" border="0" alt="" onmouseover="document.repOption4.src='images/rep_cus2.gif'" onmouseout="document.repOption4.src='images/rep_cus.gif'"></html:link>
+                                                                            <html:link action="/Data.do?method=configurar&tipo=demanda"><img src="images/rep_cus.gif" name="repOption4" height="100%" border="0" alt="" onmouseover="document.repOption4.src='images/rep_cus2.gif'" onmouseout="document.repOption4.src='images/rep_cus.gif'"></html:link>
                                                                     </td></tr>
                                                                     
                                                                     <tr height="9"><td></td></tr>
-                                                                    
-                                                                    <tr height="32"><td align="center" >
-                                                                            <html:link action="/Data.do?method=configurar&tipo=plasticos"><img src="images/rep_app.gif" name="repOption2" height="100%" border="0" alt="" onmouseover="document.repOption2.src='images/rep_app2.gif'" onmouseout="document.repOption2.src='images/rep_app.gif'"></html:link>
-                                                                    </td></tr>
-                                                                    
                                                                     
                                                                 </table>
                                                         </td></tr>
