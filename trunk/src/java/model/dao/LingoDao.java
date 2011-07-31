@@ -39,7 +39,7 @@ public class LingoDao {
         return _instance;
     }
 
-     public Usuario getUsuario(Usuario usuario) {
+    public Usuario getUsuario(Usuario usuario) {
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -76,7 +76,7 @@ public class LingoDao {
             return bean;
         }
     }
-    
+
     public ArrayList<Sector> getSectores() {
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -147,28 +147,126 @@ public class LingoDao {
             }
         }
     }
-    
+
     public void updateMineria(ArrayList<Inversion> list) {
         String sql = "update mineria set invami = ?, invbmi = ?, camimi=?, camami = ? where id = ? ";
         updateInversiones(list, sql);
-        
+
     }
-    
+
+    public void updateProducto(ArrayList<Producto> list) {
+        String sql = "update TB_PRODUCTO set CUBICAJE = ?, STOCK_MIN = ?, COSTO=?, COSTO_INV=?, SALDO_ANT = ? where id_PRODUCTO = ? ";
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        try {
+            conn = getConnection();
+            for (Producto bean : list) {
+                pstm = conn.prepareStatement(sql);
+                pstm.setDouble(1, bean.getCubicaje());
+                pstm.setInt(2, bean.getStockMin());
+                pstm.setDouble(3, bean.getCosto());
+                pstm.setDouble(4, bean.getCostoInv());
+                pstm.setInt(5, bean.getSaldoAnt());
+                pstm.setInt(6, bean.getId());
+                pstm.executeUpdate();
+            }
+        } catch (Exception e) {
+            System.out.println("Error de BD");
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (pstm != null) {
+                    pstm.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+
+    }
+
+    public void updateDemanda(ArrayList<VistaDemandaBean> list) {
+        String sql = "update TB_PRODUCTO_MES set DEMANDA = ? where id_PRODUCTO = ? and id_MES=?";
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        try {
+            conn = getConnection();
+            for (VistaDemandaBean bean : list) {
+                for (Demanda demanda : bean.getDemanda()) {
+                    pstm = conn.prepareStatement(sql);
+                    pstm.setInt(1, demanda.getCantidad());
+                    pstm.setInt(2, demanda.getProducto().getId());
+                    pstm.setInt(3, demanda.getMes().getId());
+                    pstm.executeUpdate();
+                }
+
+            }
+        } catch (Exception e) {
+            System.out.println("Error de BD");
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (pstm != null) {
+                    pstm.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+
+    }
+
+    public void updateMes(ArrayList<Mes> list) {
+        String sql = "update TB_Mes set capacidad = ? ";
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        try {
+            conn = getConnection();
+            Mes bean = list.get(0);
+
+            pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, bean.getCapacidad());
+            pstm.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println("Error de BD");
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (pstm != null) {
+                    pstm.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+
+    }
+
     public void updateAlimento(ArrayList<Inversion> list) {
         String sql = "update alimentos set invaali = ?, invbali = ?, camiali=?, camaali = ? where id = ? ";
         updateInversiones(list, sql);
     }
-    
+
     public void updateEnergia(ArrayList<Inversion> list) {
         String sql = "update energia set invaene = ?, invbene = ?, camiene=?, camaene = ? where id = ? ";
         updateInversiones(list, sql);
     }
-    
+
     public void updatePlastico(ArrayList<Inversion> list) {
         String sql = "update plasticos set invaplas = ?, invbplas = ?, camiplas=?, camaplas = ? where id = ? ";
         updateInversiones(list, sql);
     }
-    
+
     public ArrayList<Inversion> getListMineria() {
         return getInversiones("SELECT id,invami, invbmi, camimi, camami, asgmi, Ymineria,nombre FROM mineria");
     }
@@ -184,7 +282,7 @@ public class LingoDao {
     public ArrayList<Inversion> getListPlastico() {
         return getInversiones("SELECT id,invaplas, invbplas, camiplas, camaplas, asgplas, Yplasticos,nombre FROM plasticos");
     }
-    
+
     public ArrayList<XInversion> getListXMineria() {
         return getXInversiones("select mineria, Xmineria from Xmineria");
     }
@@ -200,7 +298,7 @@ public class LingoDao {
     public ArrayList<XInversion> getListXPlasticos() {
         return getXInversiones("select plasticos, Xplasticos from Xplasticos");
     }
-    
+
     public ArrayList getCantidadXSectores() {
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -238,7 +336,7 @@ public class LingoDao {
             return list;
         }
     }
-    
+
     public ArrayList getCantidadXEmpresaXSector() {
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -252,7 +350,7 @@ public class LingoDao {
 //serie mes
 //category producto
 //value pedido
-            
+
             rs = pstm.executeQuery();
             while (rs.next()) {
                 Map map = new HashMap();
@@ -311,7 +409,7 @@ public class LingoDao {
             }
         }
     }
-    
+
     private ArrayList<Inversion> getInversiones(String sql) {
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -370,11 +468,11 @@ public class LingoDao {
             XInversion bean = new XInversion();
             int i = 0;
             while (rs.next()) {
-                if(i%2==0){
+                if (i % 2 == 0) {
                     bean = new XInversion();
                     bean.setDescripcion(rs.getString(1).split("_")[0]);
                     bean.setCantidadA(rs.getInt(2));
-                }else{
+                } else {
                     bean.setCantidadB(rs.getInt(2));
                     list.add(bean);
                 }
@@ -399,8 +497,7 @@ public class LingoDao {
             return list;
         }
     }
-    
-    
+
     public ArrayList<Producto> getProductos() {
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -409,9 +506,9 @@ public class LingoDao {
         String sql = null;
         try {
             conn = getConnection();
-            
-            sql="select * from TB_PRODUCTO";
-            
+
+            sql = "select * from TB_PRODUCTO";
+
             pstm = conn.prepareStatement(sql);
 
             rs = pstm.executeQuery();
@@ -445,7 +542,7 @@ public class LingoDao {
             return list;
         }
     }
-    
+
     public ArrayList<Mes> getMeses() {
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -454,9 +551,9 @@ public class LingoDao {
         String sql = null;
         try {
             conn = getConnection();
-            
-            sql="select * from TB_MES ORDER BY 1";
-            
+
+            sql = "select * from TB_MES ORDER BY 1";
+
             pstm = conn.prepareStatement(sql);
 
             rs = pstm.executeQuery();
@@ -495,24 +592,26 @@ public class LingoDao {
         String sql = null;
         try {
             conn = getConnection();
-            
-            sql="SELECT  TB_PRODUCTO.DESCRIPCION, TB_MES.NOMBRE,TB_PRODUCTO_MES.DEMANDA FROM "
+
+            sql = "SELECT  TB_PRODUCTO.DESCRIPCION, TB_MES.NOMBRE,TB_PRODUCTO_MES.DEMANDA,TB_PRODUCTO_MES.Id_Mes FROM "
                     + "(TB_PRODUCTO_MES INNER JOIN TB_PRODUCTO ON TB_PRODUCTO_MES.Id_PRODUCTO = TB_PRODUCTO.Id_PRODUCTO) "
-                    + "INNER JOIN TB_MES ON TB_PRODUCTO_MES.Id_MES = TB_MES.Id_MES WHERE TB_PRODUCTO.ID_PRODUCTO="+productId+";";
-            
+                    + "INNER JOIN TB_MES ON TB_PRODUCTO_MES.Id_MES = TB_MES.Id_MES WHERE TB_PRODUCTO.ID_PRODUCTO=" + productId + ";";
+
             pstm = conn.prepareStatement(sql);
 
             rs = pstm.executeQuery();
             while (rs.next()) {
                 Demanda demanda = new Demanda();
-                
+                Producto producto = new Producto();
+                producto.setId(productId);
                 Mes mes = new Mes();
                 mes.setNombre(rs.getString(2));
                 demanda.setCantidad(rs.getInt(3));
+                mes.setId(rs.getInt(4));
                 demanda.setMes(mes);
-                
+                demanda.setProducto(producto);
                 demandaList.add(demanda);
-                
+
             }
             rs.close();
         } catch (Exception e) {
@@ -533,7 +632,7 @@ public class LingoDao {
             return demandaList;
         }
     }
-    
+
     public ArrayList<Pedido> getPedido(Integer productId) {
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -542,24 +641,24 @@ public class LingoDao {
         String sql = null;
         try {
             conn = getConnection();
-            
-            sql="SELECT TB_PRODUCTO.DESCRIPCION, TB_MES.NOMBRE, TB_PEDIDO.X "
+
+            sql = "SELECT TB_PRODUCTO.DESCRIPCION, TB_MES.NOMBRE, TB_PEDIDO.X "
                     + "FROM (TB_PEDIDO INNER JOIN TB_PRODUCTO ON TB_PEDIDO.Id_PRODUCTO=TB_PRODUCTO.Id_PRODUCTO) "
-                    + "INNER JOIN TB_MES ON TB_PEDIDO.Id_MES=TB_MES.Id_MES WHERE TB_PRODUCTO.ID_PRODUCTO="+productId+";";
-            
+                    + "INNER JOIN TB_MES ON TB_PEDIDO.Id_MES=TB_MES.Id_MES WHERE TB_PRODUCTO.ID_PRODUCTO=" + productId + ";";
+
             pstm = conn.prepareStatement(sql);
 
             rs = pstm.executeQuery();
             while (rs.next()) {
                 Pedido pedido = new Pedido();
-                
+
                 Mes mes = new Mes();
                 mes.setNombre(rs.getString(2));
                 pedido.setCantidad(rs.getInt(3));
                 pedido.setMes(mes);
-                
+
                 pedidoList.add(pedido);
-                
+
             }
             rs.close();
         } catch (Exception e) {
@@ -581,7 +680,7 @@ public class LingoDao {
         }
     }
 
-     public ArrayList getCantidadXProductoXMes() {
+    public ArrayList getCantidadXProductoXMes() {
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -591,14 +690,14 @@ public class LingoDao {
             String sql = "SELECT TB_MES.Id_MES,TB_MES.NOMBRE,TB_PRODUCTO.DESCRIPCION, TB_PEDIDO.X "
                     + "FROM (TB_PEDIDO INNER JOIN TB_PRODUCTO ON TB_PEDIDO.Id_PRODUCTO=TB_PRODUCTO.Id_PRODUCTO) "
                     + "INNER JOIN TB_MES ON TB_PEDIDO.Id_MES=TB_MES.Id_MES ORDER BY 1,4;";
-            
+
 //            String sql = "SELECT TB_MES.Id_MES,TB_PRODUCTO.DESCRIPCION,TB_MES.NOMBRE, TB_PEDIDO.X "
 //                   + "FROM (TB_PEDIDO INNER JOIN TB_PRODUCTO ON TB_PEDIDO.Id_PRODUCTO=TB_PRODUCTO.Id_PRODUCTO) " 
 //                   + "INNER JOIN TB_MES ON TB_PEDIDO.Id_MES=TB_MES.Id_MES ORDER BY 1,4;";
 //            
-            
+
             pstm = conn.prepareStatement(sql);
-            
+
             rs = pstm.executeQuery();
             while (rs.next()) {
                 Map map = new HashMap();

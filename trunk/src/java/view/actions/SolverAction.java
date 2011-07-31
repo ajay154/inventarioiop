@@ -56,7 +56,7 @@ public class SolverAction extends DispatchAction {
         List list = LingoDao.getInstance().getCantidadXProductoXMes();
         resp.setContentType("image/jpeg");
         OutputStream salida = resp.getOutputStream();
-        JFreeChart grafica = ChartUtil.createBarChart(list, "Cantidad de productos a pedido X Mes","","");
+        JFreeChart grafica = ChartUtil.createBarChart(list, "Cantidad de productos a pedir X Mes","","");
         CustomActionForm f = (CustomActionForm)form;
         f.getMapList().put("chart", grafica);
         ChartUtilities.writeChartAsJPEG(salida,grafica,520,400);
