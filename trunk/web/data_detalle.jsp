@@ -2,6 +2,7 @@
            prefix="html" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic"
            prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <HEAD>
     <title> 
         Data
@@ -129,61 +130,86 @@
                                                     <table border=0 cellpadding=0 cellspacing=0 width=535>
                                                         <tr><td width=535 bgcolor=a8cfe4>
                                                                 <!-- information table -->
-
+                                                                <logic:equal name="DataForm" property="readOnly" value="productos">
                                                                 <table class="displaytag" style="width:535px" cellspacing="1" id="rpt">
                                                                     <thead>
                                                                         <tr>
                                                                         <th></th>
-                                                                        <th>RendimientoA</th>
-                                                                        <th>RendimientoB</th>
+                                                                        <th>Cubicaje</th>
+                                                                        <th>Stock Minimo</th>
+                                                                        <th>Costo</th>
+                                                                        <th>Costo Inventario</th>
+                                                                        <th>Saldo Anterior</th>
                                                                     </thead>
                                                                     <tbody>
-                                                                    <logic:iterate id="inversion" name="DataForm" property="beanList" indexId="i" >
+                                                                    <logic:iterate id="producto" name="DataForm" property="beanList" indexId="i" >
                                                                         <tr class="odd">
-                                                                            <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal;">
-                                                                                ${inversion.nombre}
+                                                                            <td style="width:200px; background-color:ffffff; color:333333; font-weight:normal;">
+                                                                                ${producto.descripcion}
                                                                             </td>
-                                                                            <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
-                                                                                <html:text property="beanList[${i}].rendimientoA"/>
+                                                                            <td style="width:50px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
+                                                                                <html:text size="6" property="beanList[${i}].cubicaje"/>
                                                                             </td>
-                                                                            <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
-                                                                                <html:text property="beanList[${i}].rendimientoB"/>
+                                                                            <td style="width:50px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
+                                                                                <html:text size="6" property="beanList[${i}].stockMin"/>
+                                                                            </td>
+                                                                            <td style="width:50px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
+                                                                                <html:text size="6" property="beanList[${i}].costo"/>
+                                                                            </td>
+                                                                            <td style="width:50px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
+                                                                                <html:text size="6" property="beanList[${i}].costoInv"/>
+                                                                            </td>
+                                                                            <td style="width:50px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
+                                                                                <html:text size="6" property="beanList[${i}].saldoAnt"/>
                                                                             </td>
                                                                         </tr>
                                                                     </logic:iterate> 
                                                                 </table>
-                                                                
-                                                                
-                                                        </td></tr>
-                                                    </table>
-                                                    <br><br>
-                                                    <table border=0 cellpadding=0 cellspacing=0 width=535>
-                                                        <tr><td width=535 bgcolor=a8cfe4>
-                                                                <!-- information table -->
-
+                                                                </logic:equal>
+                                                                <logic:equal name="DataForm" property="readOnly" value="meses">
                                                                 <table class="displaytag" style="width:535px" cellspacing="1" id="rpt">
                                                                     <thead>
                                                                         <tr>
-                                                                        <th></th>
-                                                                        <th>Cant. Minima</th>
-                                                                        <th>Cant. Maxima</th>
+                                                                        <th>Mes</th>
+                                                                        <th>Capacidad</th>
                                                                     </thead>
                                                                     <tbody>
-                                                                    <logic:iterate id="inversion" name="DataForm" property="beanList" indexId="j"  >
                                                                         <tr class="odd">
-                                                                            <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal;">                                
-                                                                                ${inversion.nombre}
+                                                                            <td style="width:200px; background-color:ffffff; color:333333; font-weight:normal;">
+                                                                                Valido para todos los meses
                                                                             </td>
-                                                                            <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
-                                                                                <html:text property="beanList[${j}].cantMinima"/>
-                                                                            </td>
-                                                                            <td style="width:100px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
-                                                                                <html:text property="beanList[${j}].cantMaxima"/>
+                                                                            <td style="width:50px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
+                                                                                <html:text size="6" property="beanList[0].capacidad"/>
                                                                             </td>
                                                                         </tr>
-                                                                    </logic:iterate>
+                                                                     
                                                                 </table>
-                                                                
+                                                                </logic:equal>
+                                                                <logic:equal name="DataForm" property="readOnly" value="demanda">
+                                                                <table class="displaytag" style="width:900px" cellspacing="1" id="rpt">
+                                                                    <thead>
+                                                                        <tr>
+                                                                        <th>Producto</th>
+                                                                        <logic:iterate id="dem" name="vistaDemanda">
+                                                                        <th><bean:write name="dem" property="mes.nombre"/></th>    
+                                                                        </logic:iterate>
+                                                                    </thead>
+                                                                    <logic:iterate id="vi" name="DataForm" property="beanList" indexId="i" >
+                                                                    
+                                                                    <tbody>
+                                                                        <tr class="odd">
+                                                                            <td style="width:250px; background-color:ffffff; color:333333; font-weight:normal;">
+                                                                                <bean:write name="vi" property="producto.descripcion"/>
+                                                                            </td>
+                                                                            <logic:iterate id="de" name="vi" property="demanda" indexId="j">
+                                                                            <td style="width:50px; background-color:ffffff; color:333333; font-weight:normal; text-align: center;">
+                                                                                <html:text size="4" property="beanList[${i}].demanda[${j}].cantidad"/>
+                                                                            </td>
+                                                                            </logic:iterate>
+                                                                        </tr>
+                                                                     </logic:iterate>
+                                                                </table>
+                                                                </logic:equal>
                                                                 
                                                         </td></tr>
                                                     </table>
