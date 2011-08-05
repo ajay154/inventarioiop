@@ -17,7 +17,7 @@ import view.forms.CustomActionForm;
 
 /**
  *
- * @author Carlos
+ * @author Inventario
  */
 public class LoginAction extends DispatchAction {
 

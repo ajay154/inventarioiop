@@ -14,7 +14,7 @@ import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
- * @author cdiaz
+ * @author Inventario
  */
 public class ChartData {
     

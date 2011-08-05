@@ -7,7 +7,7 @@ package model.bean;
 
 /**
  *
- * @author Carlos
+ * @author Inventario
  */
 public class Usuario extends Bean{
     
