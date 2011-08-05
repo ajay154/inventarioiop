@@ -34,7 +34,7 @@
 <tr><td height="25" colspan=2></td></tr>
 <tr><td valign="top" width=137>
         
-            <a href="http://www.loc-aid.net" target=_blank><img src='images/logo1_la.gif' BORDER="0" ALT=""></a>
+            <a href="http://www.facusa.com.pe/" target=_blank><img src='images/logo1_la.gif' BORDER="0" ALT=""></a>
         
         
     </td>
@@ -132,7 +132,7 @@ function showTxtBox(divhide,divshow,objtxtbox) {
 
 <table border="0" cellspacing="0" cellpadding="0" width="944">
 <tr>
-    <td WIDTH="640" class="graytxt2">Copyright 2009 &copy; <B>LOC-AID.</B> All rights reserved<!--&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Privacy Policy</a>&nbsp;!--></td>    
+    <td WIDTH="640" class="graytxt2">Copyright 2011 &copy; <B>Facusa.</B> All rights reserved<!--&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Privacy Policy</a>&nbsp;!--></td>
     <td class="graytxt2" width=335 align=right>&nbsp;
             <!--&nbsp;<a href="#">FAQ</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Contact Us</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
             &nbsp;<a href="#">Site Map</a><br>!-->

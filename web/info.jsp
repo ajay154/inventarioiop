@@ -35,7 +35,7 @@
                                     <td width=18 rowspan=2 bgcolor=ffffff></td>
                                 </tr>
                                 <tr><td width=708 height=88 align=right bgcolor=ffffff valign=top>
-                                        <a href="http://www.loc-aid.net" target=_blank><img src='images/logo2_la.gif' BORDER="0" ALT=""></a><br>
+                                        <a href="http://www.facusa.com.pe/" target=_blank><img src='images/logo2_la.gif' BORDER="0" ALT=""></a><br>
                                     </td>
                                 </tr>
                             </table>
