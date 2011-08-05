@@ -181,7 +181,7 @@
                                             
                                             <table border="0" cellspacing="0" cellpadding="0" width="908" >
                                                 <tr><td width=535 height=23></td></tr>
-                                                <tr><td width=535 height=23><img src='images/rtit_summary.gif'><br></td></tr>
+                                                <tr><td width=535 height=23><img src='images/rtit_summary1.gif'><br></td></tr>
                                                 <tr><td width=535 align="left">
                                                     <table border=0 cellpadding=0 cellspacing=0 width=200>
                                                         <tr><td width=535 bgcolor=a8cfe4>
@@ -222,7 +222,7 @@
                                            
                                             <table border="0" cellspacing="0" cellpadding="0" width="908" >
                                                 <tr><td width=535 height=23></td></tr>
-                                                <tr><td width=535 height=23><img src='images/rtit_summary.gif'><br></td></tr>
+                                                <tr><td width=535 height=23><img src='images/rtit_summary2.gif'><br></td></tr>
                                                 <tr><td width=535 align="left">
                                                     <table border=0 cellpadding=0 cellspacing=0 width=200>
                                                         <tr><td width=535 bgcolor=a8cfe4>
