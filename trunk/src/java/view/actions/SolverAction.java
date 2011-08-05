@@ -83,6 +83,7 @@ public class SolverAction extends DispatchAction {
             throws Exception {
         CustomActionForm f = (CustomActionForm)form;
         Map map = new HashMap();
+        Double optimo = null;
         solve();
         f.setMapList(map);
         f.setReadOnly("SOLVER");
@@ -97,10 +98,12 @@ public class SolverAction extends DispatchAction {
             vista.setPedido(pedidoList);
             vistaPedidoList.add(vista);
         }
-        
+
+        optimo = LingoDao.getInstance().getOptimo();
         
         request.setAttribute("vista2", vistaPedidoList);
         request.setAttribute("vistaPedido", pedidoList);
+        request.setAttribute("solucion", optimo);
         
         return mapping.findForward(SOLVER);
     }

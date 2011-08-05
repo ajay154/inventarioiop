@@ -172,7 +172,6 @@ public class LingoDao {
 
     }
 
-
     public ArrayList<Producto> getProductos() {
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -398,6 +397,39 @@ public class LingoDao {
             }
 
             return list;
+        }
+    }
+
+    public Double getOptimo() {
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        Double optimo = null;
+        try {
+            conn = getConnection();
+            String sql = " select optimo from TB_SOLUCION";
+
+            pstm = conn.prepareStatement(sql);
+            rs = pstm.executeQuery();
+            if (rs.next()) {
+                optimo = rs.getDouble(1);
+            }
+            rs.close();
+        } catch (Exception e) {
+            System.out.println("Error de BD");
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (pstm != null) {
+                    pstm.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+            return optimo;
         }
     }
 
