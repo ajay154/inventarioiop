@@ -9,7 +9,7 @@ import java.io.Serializable;
 //
 /**
  *
- * @author Carlos
+ * @author Inventario
  */
 public class Bean implements Serializable{
     

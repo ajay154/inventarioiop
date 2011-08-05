@@ -9,7 +9,7 @@ import org.apache.struts.validator.ValidatorForm;
 
 /**
  *
- * @author Carlos
+ * @author Inventario
  */
 public class CustomActionForm extends ValidatorForm {
     

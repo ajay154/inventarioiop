@@ -8,7 +8,7 @@ import java.sql.*;
 
 /**
  *
- * @author cdiaz
+ * @author Inventario
  */
 public class Conexion {
 

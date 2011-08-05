@@ -28,7 +28,7 @@ import org.jfree.ui.TextAnchor;
 
 /**
  *
- * @author cdiaz
+ * @author Inventario
  */
 public class ChartUtil {
 
